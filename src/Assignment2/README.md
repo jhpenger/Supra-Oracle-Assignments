@@ -1,4 +1,4 @@
-# Assignment 1
+# Assignment 2
 ### Problem Description:
 Design a decentralized voting system smart contract using Solidity. The contract should support the
 following features:
