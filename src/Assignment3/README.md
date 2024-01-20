@@ -1,4 +1,4 @@
-# Assignment 1
+# Assignment 3
 ### Problem Description:
 Create a smart contract that facilitates the swapping of one ERC-20 token for another at a predefined
 exchange rate. The smart contract should include the following features:
