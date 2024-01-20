@@ -151,7 +151,7 @@ contract TokenSale is Ownable, ReentrancyGuard {
     }
 
 
-    function buyPublicSale() external payable isInPublicSale checkAmtPublic checkPublicCapMax{
+    function buyPublicSale() external payable nonReentrant isInPublicSale checkAmtPublic checkPublicCapMax{
         //store the users' total contribution (in eth) and total tokens bought for use in refund
         uint tokensBought = msg.value * publicSale.exchangeRate;
         users[msg.sender].publicSaleETHSent += msg.value;
@@ -179,7 +179,7 @@ contract TokenSale is Ownable, ReentrancyGuard {
     Refund function for the presale if goal was not reached and sale is over
     User can specify the amount of tokens they would like to refund
     */
-    function refundPresale(uint tokenAmt) external isPresaleRefundable(tokenAmt){
+    function refundPresale(uint tokenAmt) external nonReentrant isPresaleRefundable(tokenAmt){
         //calculate the amount of eth to be refunded
         uint ethAmt = tokenAmt / presale.exchangeRate;
 
@@ -197,7 +197,7 @@ contract TokenSale is Ownable, ReentrancyGuard {
     Refund function for the publicSale if goal was not reached and sale is over
     User can specify the amount of tokens they would like to refund
     */
-    function refundPublicSale(uint tokenAmt) external isPublicSaleRefundable(tokenAmt){
+    function refundPublicSale(uint tokenAmt) external nonReentrant isPublicSaleRefundable(tokenAmt){
         //calculate the amount of eth to be refunded
         uint ethAmt = tokenAmt / publicSale.exchangeRate;
 
